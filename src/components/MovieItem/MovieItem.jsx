@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 function MovieItem({ movie }) {
-  const { title, vote_average, release_date, poster_path } = movie;
+  const navigate = useNavigate();
+  const { title, vote_average, release_date, poster_path, id } = movie;
   return (
-    <div className="movie-item flex flex-col p-3 bg-slate-800 rounded-lg h-full select-none">
+    <div className="movie-item flex flex-col p-3 bg-slate-800 rounded-lg h-full select-none text-white">
       <img
         src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
         alt=""
@@ -13,7 +15,10 @@ function MovieItem({ movie }) {
           <span>{new Date(release_date).getFullYear()}</span>
           <span>{vote_average}</span>
         </div>
-        <button className="capitalize bg-primary w-full py-3 px-6 rounded-lg text-xl mt-auto">
+        <button
+          className="capitalize bg-primary w-full py-3 px-6 rounded-lg text-xl mt-auto"
+          onClick={() => navigate(`/movies/${id}`)}
+        >
           Watch now
         </button>
       </div>

@@ -1,4 +1,3 @@
-
 import useSWR from "swr";
 import fetcher from "../../utils/fetcher";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,22 +9,22 @@ function Banner() {
   const movies = data?.results || [];
   return (
     <section className="banner h-[500px] page-container mb-20 overflow-hidden">
-      <Swiper>
+      <Swiper grabCursor={true} slidesPerView={"auto"}>
         {movies.map((item) => (
-          <SwiperSlide grabCursor={true} slidesPerView={"auto"}>
-            <BannerItem key={item.id} item={[item, "2"]} />
+          <SwiperSlide key={item.id}>
+            <BannerItem key={item.id} item={item} />
           </SwiperSlide>
         ))}
       </Swiper>
     </section>
   );
-  function BannerItem({ item: [item, type] }) {
+  function BannerItem({ item }) {
     const { title, poster_path } = item;
     return (
       <div className="w-full h-full rounded-lg bg-white relative">
         <div className="overlay absolute w-full h-full rounded-lg inset-0 bg-gradient-to-t from-[rgba(0,0,0,0.4)] to-[rgba(0,0,0,0.3)]"></div>
         <img
-          src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
+          src={`https://image.tmdb.org/t/p/w1280/${poster_path}`}
           alt=""
           className="w-full h-full rounded-lg object-cover"
         />

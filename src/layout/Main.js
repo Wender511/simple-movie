@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header/Header";
 
-function MainLayout({ childrend }) {
+function MainLayout({ children }) {
   return (
     <div className="app">
       <Header></Header>
-      <Outlet></Outlet>
+      <main> {children}</main>
     </div>
   );
 }
